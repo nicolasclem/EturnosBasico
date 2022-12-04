@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Especialidad>
+@{
+    ViewData["Title"] = "Especialidades";
+}
+
+<h2>Especialidad</h2>
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(x=> x.Nombre)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+             <tr>
+                <td>
+                   @Html.DisplayFor(x=>item.Nombre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                </td>
+                <td>
+                    <a asp-action="Eliminar" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+       
+        
+    </tbody>
+</table>

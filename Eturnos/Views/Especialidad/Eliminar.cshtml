@@ -1,0 +1,25 @@
+﻿@model Especialidad
+
+@{
+    ViewData["Title"] = "Eliminar especialidad";
+}
+
+<h3>Desa eliminar esta  especialidad??</h3>
+
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Nombre)
+        </dd>
+    </dl>
+    <form asp-action="Eliminar">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" class="btn btn-danger" value="Eliminar"/>
+    </form>
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</div>

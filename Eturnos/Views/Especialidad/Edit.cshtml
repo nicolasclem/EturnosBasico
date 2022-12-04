@@ -1,0 +1,25 @@
+﻿@model Especialidad
+
+@{
+    ViewData["Title"] = "Editar especialidad";
+}
+
+<h3>editar especialidad</h3>
+
+<div>
+    <form asp-action="Edit" >
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id"/>
+        <div>
+            <label asp-for="Nombre"></label>
+            <input  asp-for="Nombre" class="form-control mt-2"/>
+            <span asp-validation-for="Nombre"></span>
+        </div>
+        <div>
+            <input  type="submit" class="btn btn-primary mt-4" value="Editar"/>
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Volver</a>
+</div>
