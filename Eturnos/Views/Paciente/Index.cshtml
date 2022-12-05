@@ -1,6 +1,62 @@
-﻿@model Paciente
+﻿@model IEnumerable<Paciente>
 @{
     ViewData["Title"] = "Pacientes";
 }
 
 <h1>Paciente</h1>
+<p>
+    <a asp-action="Create">Nuevo</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(x=>x.Nombre)
+            </th>
+             <th>
+                @Html.DisplayNameFor(x=>x.Apellido)
+            </th>
+             <th>
+                @Html.DisplayNameFor(x=>x.Direccion)
+            </th>
+             <th>
+                @Html.DisplayNameFor(x=>x.Telefono)
+            </th>
+             <th>
+                @Html.DisplayNameFor(x=>x.Email)
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x=>item.Nombre)
+                    </td>                
+         
+                    <td>
+                        @Html.DisplayFor(x=>item.Apellido)
+                    </td>
+          
+                     <td>
+                        @Html.DisplayFor(x=>item.Direccion)
+                    </td>          
+                
+                    <td>
+                    @Html.DisplayFor(x=>item.Telefono)
+                    </td>              
+              
+                    <td>
+                    @Html.DisplayFor(x=>item.Email)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                       <a asp-action="Eliminar" asp-route-id="@item.Id">Borrar</a>
+                    </td>
+                </tr>
+
+        }
+    </tbody>
+</table>

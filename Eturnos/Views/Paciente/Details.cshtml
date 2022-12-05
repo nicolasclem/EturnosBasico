@@ -1,0 +1,45 @@
+﻿@model Paciente
+@{
+    ViewData["Title"] = "Detalle del paciente";
+}
+
+<h3>Detalle de Paciente</h3>
+
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Apellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Apellido)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Direccion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Telefono)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Email)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary ">Volver</a>
+</div>

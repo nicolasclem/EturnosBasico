@@ -1,0 +1,45 @@
+﻿@model Paciente
+
+<h3>Eliminar Paciente</h3>
+
+<p>Esta seguro que quiere elminarlo</p>
+
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Nombre)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Apellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Apellido)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Direccion)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Telefono)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Email)
+        </dd>
+    </dl>
+    <form asp-action="Eliminar">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" class="btn btn-danger" value="Eliminar"/>
+        <a asp-action="Index" class="btn btn-secondary" >Volver</a>
+    </form>
+</div>
