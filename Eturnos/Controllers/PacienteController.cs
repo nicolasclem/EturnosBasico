@@ -81,6 +81,32 @@ namespace Eturnos.Controllers
 
             return View(paciente);  
         }
+        public async Task<IActionResult> Eliminar(int? id)
+        {
+            if (id == null)
+            {
+                NotFound();
+            }
+            var paciente = await context.Pacientes.FirstOrDefaultAsync(p => p.Id == id);
+            if(paciente == null) 
+            {
+                return NotFound();
+            }
+            return View(paciente);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>Eliminar(Paciente paciente)
+        {
+            var pacienteABorrar = await context.Pacientes.FindAsync(paciente.Id);
+            if(pacienteABorrar == null)
+            {
+                return NotFound();
+            }
+            context.Pacientes.Remove(pacienteABorrar);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
