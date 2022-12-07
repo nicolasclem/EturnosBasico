@@ -1,0 +1,57 @@
+﻿@model Medico
+
+<h3>Eliminar Medico</h3>
+
+<p>Esta seguro que quiere elminarlo</p>
+
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(x=>x.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Nombre)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Apellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Apellido)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Direccion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Direccion)
+        </dd>
+           <dt>
+            @Html.DisplayNameFor(x=>x.Telefono)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Telefono)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(x=>x.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.Email)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(x=>x.HorarioAtencionDesde)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.HorarioAtencionDesde)
+        </dd>
+          <dt>
+            @Html.DisplayNameFor(x=>x.HorarioAtencioHasta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x=>x.HorarioAtencioHasta)
+        </dd>
+    </dl>
+    <form asp-action="Eliminar">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" class="btn btn-danger" value="Eliminar"/>
+        <a asp-action="Index" class="btn btn-secondary" >Volver</a>
+    </form>
+</div>

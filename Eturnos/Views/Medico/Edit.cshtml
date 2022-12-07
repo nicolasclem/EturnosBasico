@@ -1,0 +1,55 @@
+﻿@model Medico
+
+<h2>Editar  Medico</h2>
+<div>
+     <form asp-action="Edit">
+         <div asp-validation-summary="ModelOnly"></div>
+         <input type="hidden" asp-for="Id" />
+         <div>
+             <label asp-for="Nombre"></label>
+             <input asp-for="Nombre"/>
+             <span asp-validation-for="Nombre" class="text-danger"></span>
+         </div>
+            <div>
+             <label asp-for="Apellido"></label>
+             <input asp-for="Apellido"/>
+             <span asp-validation-for="Apellido" class="text-danger"></span>
+         </div>
+            <div>
+             <label asp-for="Direccion"></label>
+             <input asp-for="Direccion"/>
+             <span asp-validation-for="Direccion" class="text-danger"></span>
+         </div>
+            <div>
+             <label asp-for="Telefono"></label>
+             <input asp-for="Telefono"/>
+             <span asp-validation-for="Telefono" class="text-danger"></span>
+         </div>
+          <div>
+             <label asp-for="Email"></label>
+             <input asp-for="Email"/>
+             <span asp-validation-for="Email" class="text-danger"></span>
+         </div>
+          <div>
+             <label asp-for="HorarioAtencionDesde"></label>
+             <input asp-for="HorarioAtencionDesde"/>
+             <span asp-validation-for="HorarioAtencionDesde" class="text-danger"></span>
+         </div>
+
+         <div>
+             <label asp-for="HorarioAtencioHasta"></label>
+             <input asp-for="HorarioAtencioHasta"/>
+             <span asp-validation-for="HorarioAtencioHasta" class="text-danger"></span>
+         </div>
+         <div>
+             <label class="control label"></label>
+             <select name="IdEspe" class="form-control" asp-items="ViewBag.ListaEspecialidades"></select>
+         </div>
+
+         <div>
+             <input type="submit" class="btn btn-success mt-2" value="Grabar"/>
+         </div>
+
+     </form>
+</div>
+<a asp-action="Index" class="btn btn-secondary mt-2">Volver</a>

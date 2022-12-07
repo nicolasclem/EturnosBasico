@@ -4,6 +4,7 @@ using Eturnos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eturnos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221205190125_Medico")]
+    partial class Medico
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,61 +52,29 @@ namespace Eturnos.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Apellido")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("HorarioAtencioHasta")
-                        .IsUnicode(false)
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HorarioAtencionDesde")
-                        .IsUnicode(false)
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medicos", (string)null);
-                });
-
-            modelBuilder.Entity("Eturnos.Models.MedicoEspecialidad", b =>
-                {
-                    b.Property<int>("IdMedico")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdEspeciliadad")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdMedico", "IdEspeciliadad");
-
-                    b.HasIndex("IdEspeciliadad");
-
-                    b.ToTable("MedicosEspecialidades");
+                    b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("Eturnos.Models.Paciente", b =>
@@ -148,35 +118,6 @@ namespace Eturnos.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pacientes", (string)null);
-                });
-
-            modelBuilder.Entity("Eturnos.Models.MedicoEspecialidad", b =>
-                {
-                    b.HasOne("Eturnos.Models.Especialidad", "Especialidad")
-                        .WithMany("MedicoEspecialidad")
-                        .HasForeignKey("IdEspeciliadad")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Eturnos.Models.Medico", "Medico")
-                        .WithMany("MedicoEspecialidad")
-                        .HasForeignKey("IdMedico")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Especialidad");
-
-                    b.Navigation("Medico");
-                });
-
-            modelBuilder.Entity("Eturnos.Models.Especialidad", b =>
-                {
-                    b.Navigation("MedicoEspecialidad");
-                });
-
-            modelBuilder.Entity("Eturnos.Models.Medico", b =>
-                {
-                    b.Navigation("MedicoEspecialidad");
                 });
 #pragma warning restore 612, 618
         }

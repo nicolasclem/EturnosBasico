@@ -4,6 +4,7 @@ using Eturnos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eturnos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221205204039_Medico2")]
+    partial class Medico2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,21 +94,6 @@ namespace Eturnos.Migrations
                     b.ToTable("Medicos", (string)null);
                 });
 
-            modelBuilder.Entity("Eturnos.Models.MedicoEspecialidad", b =>
-                {
-                    b.Property<int>("IdMedico")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdEspeciliadad")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdMedico", "IdEspeciliadad");
-
-                    b.HasIndex("IdEspeciliadad");
-
-                    b.ToTable("MedicosEspecialidades");
-                });
-
             modelBuilder.Entity("Eturnos.Models.Paciente", b =>
                 {
                     b.Property<int>("Id")
@@ -148,35 +135,6 @@ namespace Eturnos.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pacientes", (string)null);
-                });
-
-            modelBuilder.Entity("Eturnos.Models.MedicoEspecialidad", b =>
-                {
-                    b.HasOne("Eturnos.Models.Especialidad", "Especialidad")
-                        .WithMany("MedicoEspecialidad")
-                        .HasForeignKey("IdEspeciliadad")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Eturnos.Models.Medico", "Medico")
-                        .WithMany("MedicoEspecialidad")
-                        .HasForeignKey("IdMedico")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Especialidad");
-
-                    b.Navigation("Medico");
-                });
-
-            modelBuilder.Entity("Eturnos.Models.Especialidad", b =>
-                {
-                    b.Navigation("MedicoEspecialidad");
-                });
-
-            modelBuilder.Entity("Eturnos.Models.Medico", b =>
-                {
-                    b.Navigation("MedicoEspecialidad");
                 });
 #pragma warning restore 612, 618
         }
