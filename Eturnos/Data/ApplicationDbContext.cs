@@ -21,6 +21,8 @@ namespace Eturnos.Data
 
 
         public DbSet<MedicoEspecialidad> MedicosEspecialidades { get; set; }
+
+        public DbSet<Turno> Turnos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Especialidad>(entidad =>
@@ -106,6 +108,36 @@ namespace Eturnos.Data
                 .WithMany(p=>p.MedicoEspecialidad)
                 .HasForeignKey(x => x.IdEspeciliadad);
 
+            modelBuilder.Entity<Turno>(entidad =>
+            {
+                entidad.ToTable("Turnos");
+
+                entidad.HasKey(t=>t.Id);
+
+                entidad.Property(p=>p.IdPaciente)
+                 .IsRequired()
+                 .IsUnicode(false);
+
+                entidad.Property(m => m.IdMedico)
+                 .IsRequired()
+                 .IsUnicode(false);
+                
+                entidad.Property(t => t.FechaHoraInicio)
+                     .IsRequired()
+                     .IsUnicode(false);
+                entidad.Property(t => t.FechaHoraFin)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+            });
+
+            modelBuilder.Entity<Turno>().HasOne(x => x.Paciente)
+                .WithMany(t => t.Turno)
+                .HasForeignKey(t => t.IdPaciente);
+
+            modelBuilder.Entity<Turno>().HasOne(x => x.Medico)
+                .WithMany(t => t.Turno)
+                .HasForeignKey(t => t.IdMedico);
         }
     }
 }

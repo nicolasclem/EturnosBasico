@@ -20,5 +20,7 @@ namespace Eturnos.Models
         public DateTime HorarioAtencioHasta { get; set; }
 
         public List<MedicoEspecialidad> MedicoEspecialidad { get; set; }
+
+        public List<Turno> Turno { get; set; }
     }
 }

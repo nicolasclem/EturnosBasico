@@ -1,60 +1,73 @@
 ﻿@model Medico
 
+
 <h4>Medico</h4>
+<hr />
+<div class="row">
+    <div >
+        <div asp-validation-summary="ModelOnly"></div>
+        <form class="col s12" asp-action="Create">
+            <div class="row">
+                <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                 <input asp-for="Nombre" type="text" class="validate">
+            <label asp-for="Nombre" >Nombre</label>
+                </div>
+            </div>   
+            <div >
+                <label asp-for="Nombre"></label>
+                <input asp-for="Nombre"/>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div >
+                <label asp-for="Apellido"></label>
+                <input asp-for="Apellido"/>
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div >
+                 <label asp-for="Direccion"></label>
+                <input asp-for="Direccion"/>
+                 <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div >
+                <label asp-for="Telefono"></label>
+                <input asp-for="Telefono"/>
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+             </div>
+            <div >
+                <label asp-for="Email"></label>
+                <input asp-for="Email"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div >
+                <label asp-for="HorarioAtencionDesde"></label>
+                <input asp-for="HorarioAtencionDesde"/>
+                <span asp-validation-for="HorarioAtencionDesde" class="text-danger"></span>
+            </div>
 
-<div>
-
-    <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div>
-            <label asp-for="Nombre"></label>
-            <input asp-for="Nombre"/>
-            <span asp-validation-for="Nombre" class="text-danger"></span>
-        </div>
-          <div>
-            <label asp-for="Apellido"></label>
-            <input asp-for="Apellido"/>
-            <span asp-validation-for="Apellido" class="text-danger"></span>
-        </div>
-          <div>
-            <label asp-for="Direccion"></label>
-            <input asp-for="Direccion"/>
-            <span asp-validation-for="Direccion" class="text-danger"></span>
-        </div>
-          <div>
-            <label asp-for="Telefono"></label>
-            <input asp-for="Telefono"/>
-            <span asp-validation-for="Telefono" class="text-danger"></span>
-        </div>
-          <div>
-            <label asp-for="Email"></label>
-            <input asp-for="Email"/>
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-         <div>
-             <label asp-for="HorarioAtencionDesde"></label>
-             <input asp-for="HorarioAtencionDesde"/>
-             <span asp-validation-for="HorarioAtencionDesde" class="text-danger"></span>
-         </div>
-
-         <div>
-             <label asp-for="HorarioAtencioHasta"></label>
-             <input asp-for="HorarioAtencioHasta"/>
-             <span asp-validation-for="HorarioAtencioHasta" class="text-danger"></span>
-         </div>
-         <div>
-             <label class="control label"></label>
-             <select name="IdEspcialidad" class="form-control" asp-items="ViewBag.ListaEspecialidades"></select>
-         </div>
-         <div>
-             <button type="submit" class="btn btn-success mt-3" >
+            <div>
+                <label asp-for="HorarioAtencioHasta"></label>
+                <input asp-for="HorarioAtencioHasta"/>
+                <span asp-validation-for="HorarioAtencioHasta" class="text-danger"></span>
+            </div>
+            <div>
+                <label class="control label"></label>
+                <select name="IdEspcialidad" class="form-control" asp-items="ViewBag.ListaEspecialidades"></select>
+            </div>
+            <div >
+                <button type="submit" class="btn btn-success mt-3" >
                  Grabar
-             </button>
-         </div>
+                </button>
+            </div>
 
-    </form>
+        </form>
+    </div>
+ 
+
 </div>
-
 <div>
    <a asp-action="Index" class="btn btn-secondary mt-2">Volver</a>
 </div>
+
+
+

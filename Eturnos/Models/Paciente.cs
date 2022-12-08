@@ -12,5 +12,7 @@ namespace Eturnos.Models
         public string Telefono { get; set; }
 
         public string  Email { get; set; }
+
+        public List<Turno> Turno { get; set; }
     }
 }

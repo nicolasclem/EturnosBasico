@@ -5,10 +5,12 @@
 
 <h1>Medicos</h1>
 <p>
-    <a asp-action="Create">Nuevo</a>
+    <a  class="btn-floating btn-large red teal darken-1"asp-action="Create"><i class="material-icons">
+person_add
+</i></a>
 </p>
-<table>
-    <thead>
+<table class="responsive-table highlight z-depth-3 blue lighten-5">
+    <thead class=" blue lighten-2 white-text">
         <tr>
             <th>
                 @Html.DisplayNameFor(x=>x.Nombre)
@@ -30,6 +32,9 @@
             </th>
              <th>
                 @Html.DisplayNameFor(x=>x.HorarioAtencioHasta)
+            </th>
+            <th>
+
             </th>
         </tr>
     </thead>
@@ -63,9 +68,9 @@
                     @Html.DisplayFor(x=>item.HorarioAtencioHasta)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                       <a asp-action="Eliminar" asp-route-id="@item.Id">Borrar</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="material-icons">edit</i></a>
+                            <a asp-action="Details" asp-route-id="@item.Id"><i class="material-icons grey-text">info</i></a>
+                           <a asp-action="Eliminar" asp-route-id="@item.Id"><i class="material-icons red-text">delete</i></a>
                     </td>
                 </tr>
 
