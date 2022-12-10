@@ -141,5 +141,24 @@ namespace Eturnos.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        private bool MedicoExists( int id)
+        {
+
+            return context.Medicos.Any(e=>e.Id == id);
+        }
+
+        public string TraerHorarioAtencionDesde(int id)
+        {
+            var  horarioAtencionDesde = context.Medicos.Where(m=>m.Id== id).FirstOrDefault().HorarioAtencionDesde;
+            return horarioAtencionDesde.Hour + ":" + horarioAtencionDesde.Minute;
+        
+        }
+        public string TraerHorarioAtencionHasta(int id)
+        {
+            var horarioAtencionHasta = context.Medicos.Where(m => m.Id == id).FirstOrDefault().HorarioAtencioHasta;
+            return horarioAtencionHasta.Hour + ":" + horarioAtencionHasta.Minute;
+
+        }
     }
 }
