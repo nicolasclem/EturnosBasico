@@ -1,3 +1,19 @@
-﻿  
+﻿@model Turno
+
+@{
+    ViewBag.Title = "Asignacion de Turnos";
+}
 
 <h1>Turnos</h1>
+
+<div class="row">
+    <div class="col s6">
+        <label asp-for="IdMedico">Medico</label>
+        <select asp-for="IdMedico" asp-items="ViewBag.IdMedico"></select>
+        
+    </div>
+      <div class="col s6">
+        <label asp-for="IdPaciente">Paciente</label>
+        <select asp-for="IdPaciente" asp-items= "@ViewBag.IdPaciente"></select>
+    </div>
+</div>

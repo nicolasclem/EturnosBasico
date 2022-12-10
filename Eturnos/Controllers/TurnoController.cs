@@ -18,7 +18,7 @@ namespace Eturnos.Controllers
         public IActionResult Index()
         {
             ViewData["IdMedico"] = new SelectList((from medico in context.Medicos.ToList() select new {IdMedico = medico.Id,NombreCompleto= medico.Nombre +" "+ medico.Apellido}),"IdMedico","NombreCompleto");
-            ViewData["IdPaciente"] = new SelectList((from paciente in context.Pacientes.ToList() select new { IdPaciente = paciente.Id, NombreCompleto = paciente.Nombre + " " + paciente.Apellido }), "IdMedico", "NombreCompleto");
+            ViewData["IdPaciente"] = new SelectList((from paciente in context.Pacientes.ToList() select new { IdPaciente = paciente.Id, NombreCompleto = paciente.Nombre + " " + paciente.Apellido }), "IdPaciente", "NombreCompleto");
 
             return View();
         }
