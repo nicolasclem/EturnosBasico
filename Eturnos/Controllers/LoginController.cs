@@ -25,10 +25,21 @@ namespace Eturnos.Controllers
             if(ModelState.IsValid)
             {
                 // encriptar pass
-                string passwordEncriptado = Encriptar(login.Password)
-                {
+                string passwordEncriptado = Encriptar(login.Password);
+                
+                var loginUser = context.Login.Where(l=>l.Usuario== login.Usuario && l.Password== passwordEncriptado).FirstOrDefault();  
 
+                if(loginUser!=null) 
+                {
+                    return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    ViewData["errorLogin"] = "los datos ingresados son incorrectios";
+                    
+                    return View("Index");
+                }
+                
             }
             return View("index");
         }
